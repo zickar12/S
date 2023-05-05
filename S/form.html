@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MONKEY</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="orodje/css/form.css" rel="stylesheet" />
+<link rel="icon" type="image/x-icon" href="galerija/monkey.png">
+</head>
+<body>
+
+<header>
+  <div class="topnav">
+  <a href="index.html">Domov</a>
+  <a href="knjige.html">Vse knjige</a>
+  <a class="active" href="form.html">Contact</a>
+  <a href="opica.html" class="split"><img src="galerija/monkey.png"></a>
+  </div>
+</header>
+<hr>
+
+<section>
+
+   <form name="narocilo" method="POST" data-netlify="true" onsubmit="submit" class="modal-content"   
+   data-netlify-honeypot="bot-field"  action="/success/">
+    <div class="container">
+	<h1><center>Sign up</center></h1>
+		<br>	
+      <label for="email"><b>Gmail</b></label>
+      <input type="text" placeholder="Vnesi Gmail" name="email" required>
+
+      <label for="password"><b>Geslo</b></label>
+	<input type="password" placeholder="Geslo" id="password" name="password" required oninput="checkPassword()">
+
+	<label for="confirm_password"><b>Ponovi geslo</b></label>
+	<input type="password" placeholder="Ponovi geslo" id="confirm_password" name="confirm_password" required oninput="checkPassword()">
+
+	<label>
+		<input type="checkbox" onclick="togglePasswordVisibility()" style="margin-bottom:15px; margin-left: 5%"> Show password
+		<input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px; margin-left: 50%"> Remember me
+	</label>
+
+	<script>
+	function togglePasswordVisibility() {
+		var passwordInput = document.getElementById("password");
+		var confirmInput = document.getElementById("confirm_password");
+		if (passwordInput.type === "password") {
+			passwordInput.type = "text";
+			confirmInput.type = "text";
+		} else {
+			passwordInput.type = "password";
+			confirmInput.type = "password";
+		}
+	}
+
+	function checkPassword() {
+		var passwordInput = document.getElementById("password");
+		var confirmInput = document.getElementById("confirm_password");
+		var message = document.getElementById("password_message");
+		var submitButton = document.getElementById("submit_button");
+
+		// Check for matching passwords and a minimum length of 8 characters
+		if (passwordInput.value.length < 8 || passwordInput.value !== confirmInput.value) {
+			message.innerHTML = "Passwords must match and be at least 8 characters long";
+			message.style.color = "red";
+			submitButton.disabled = true;
+		} else {
+			message.innerHTML = "";
+			submitButton.disabled = false;
+		}
+	}
+	</script>
+
+<p id="password_message"></p>
+<button type="submit" id="submit_button" disabled>Sign up</button>
+
+    </div>
+  </form>
+</div>
+</section>
+</body>
+<script>
+		// Get the modal
+		var modal = document.getElementById('id01');
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		  if (event.target == modal) {
+			modal.style.display = "none";
+		  }
+		  
+		}
+		
+		
+		
+	</script>
+</html>
+
+
